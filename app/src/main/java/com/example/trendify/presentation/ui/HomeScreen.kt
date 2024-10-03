@@ -11,8 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import cafe.adriel.voyager.core.screen.Screen
-import com.example.trendify.data.model.Banner
-import com.example.trendify.data.model.proudcts
+import com.example.trendify.data.model.Product
 import com.example.trendify.presentation.viewmodel.HomeViewModel
 
 class HomeScreen : Screen {
@@ -21,11 +20,11 @@ class HomeScreen : Screen {
         val viewModel: HomeViewModel = hiltViewModel()
         val homeResponse = viewModel.HomeResponse.collectAsState()
 
-        homeResponse.value?.data?.banners?.let { banners ->
+        homeResponse.value?.data?.products?.let { productlist ->
             // Display the list of products if available
             LazyColumn {
-                items(banners) { banner ->
-                    HomeProductCard(product = banner)
+                items(productlist) { products ->
+                    HomeProductCard(product = products)
                 }
             }
         } ?: run {
@@ -36,7 +35,7 @@ class HomeScreen : Screen {
 }
 
 @Composable
-fun HomeProductCard(product: Banner) {
+fun HomeProductCard(product: Product) {
     Card(
         modifier = Modifier
             .padding(16.dp)
@@ -45,7 +44,7 @@ fun HomeProductCard(product: Banner) {
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            //Text(text = Banner.title ?: "Unknown Product", style = MaterialTheme.typography.titleMedium)
+            Text(text = product.description ?: "Unknown Product", style = MaterialTheme.typography.titleMedium)
             // Uncomment and use price if available
             // Text(text = product.price ?: "No Price", style = MaterialTheme.typography.titleLarge)
            // Text(text = Banner.description ?: "No Description", style = MaterialTheme.typography.bodyMedium)

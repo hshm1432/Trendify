@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TrendifyTheme {
-                Navigator(screen = LoginSceen())
+                Navigator(screen = HomeScreen())
             }
         }
     }
