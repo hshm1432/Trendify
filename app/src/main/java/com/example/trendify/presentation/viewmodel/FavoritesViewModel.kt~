@@ -1,0 +1,4 @@
+package com.example.trendify.presentation.viewmodel
+
+class FavoritesViewModel {
+}
