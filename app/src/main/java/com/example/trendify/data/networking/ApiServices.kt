@@ -27,15 +27,15 @@ interface ApiServices {
     @GET("Home/Gethomedata")
     suspend fun getHome():Response<Home>
 
-    @GET("Favorites/GetFavorites")
+    @GET("favorites")
     suspend fun getFavorites():Response<GetFavoritesResponse>
 
-    @POST("Favorites/addordeletefavoritewithproductid")
+    @POST("favorites")
     suspend fun addOrDeleteFavorite(@Body request: AddOrDeleteFavRequest):Response<AddOrDeleteFavResponse>
 
-    @GET("Carts/GetCarts")
+    @GET("carts")
     suspend fun getCarts():Response<GetCartsResponse>
 
-    @POST("Carts/addorremovecartwithproductid")
+    @POST("carts")
     suspend fun addOrDeleteCart(@Body request: AddOrDeleteCartRequest):Response<AddOrDeleteCartResponse>
 }
